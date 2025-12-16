@@ -19,7 +19,7 @@ max_score = max(final_scores.values())
 
 candidates = []
 
-for name, total in final_scores.values():
+for name, total in final_scores.items():
     if total == max_score:
         candidates.append(name)
 

@@ -77,52 +77,42 @@
 #     print("illegal")
 
 # Deep seek soltions.
-# Read the board
 board = [input().strip() for _ in range(3)]
 
-# Function to check if a player has won
 def win(player, board):
-    # Rows
     for row in board:
-        if row == player * 3:
+        if row == player *3:
             return True
-    # Columns
+    
     for col in range(3):
         if all(board[row][col] == player for row in range(3)):
             return True
-    # Diagonals
+    
     if all(board[i][i] == player for i in range(3)):
         return True
     if all(board[i][2-i] == player for i in range(3)):
         return True
+
     return False
 
-# Count X, 0, and empty cells
 count_X = sum(row.count('X') for row in board)
 count_0 = sum(row.count('0') for row in board)
 count_empty = sum(row.count('.') for row in board)
 
-# Who won?
 X_won = win('X', board)
 O_won = win('0', board)
 
-# Validation and verdict logic
 illegal = False
 
-# First check for impossible counts
 if count_0 > count_X or count_X - count_0 > 1:
     illegal = True
-# If both players won simultaneously → illegal
 elif X_won and O_won:
     illegal = True
-# If X won, X must have one more than O
 elif X_won and count_X != count_0 + 1:
     illegal = True
-# If 0 won, counts must be equal
 elif O_won and count_X != count_0:
     illegal = True
 
-# Decide verdict
 if illegal:
     print("illegal")
 elif X_won:
@@ -132,7 +122,6 @@ elif O_won:
 elif count_empty == 0:
     print("draw")
 else:
-    # Decide whose turn is next
     if count_X == count_0:
         print("first")
     else:

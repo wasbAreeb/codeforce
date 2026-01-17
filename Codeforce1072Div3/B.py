@@ -1,6 +1,8 @@
 
 # B. Hourglass Problem
 
+# 17/01/2026: Understood 20% of the problem
+
 t = int(input())
 
 result = []

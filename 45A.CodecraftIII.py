@@ -1,15 +1,17 @@
 
-import math
 
-months = ["Januray", "Febraury", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-month = input().strip()
+s = input().strip()
 k = int(input().strip())
 
-index = months.index(month)+1
+index = months.index(s)+1
 index += k
 
-while index >= 12:
-    index /= 12
+while index > 12:
+    index -= 12
 
-print(months[index])
+print(months[index-1])
+
+
+
